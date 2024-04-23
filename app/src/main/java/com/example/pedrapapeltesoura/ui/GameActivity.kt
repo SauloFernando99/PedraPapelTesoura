@@ -1,4 +1,4 @@
-package com.example.pedrapapeltesoura
+package com.example.pedrapapeltesoura.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
