@@ -13,5 +13,9 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(agb.root)
+        agb.toolbarIn.toolbar.apply {
+            subtitle = this@GameActivity.javaClass.simpleName
+            setSupportActionBar(this)
+        }
     }
 }
