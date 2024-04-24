@@ -19,7 +19,7 @@ class GameActivity : AppCompatActivity() {
         agb.toolbarIn.toolbar.apply {
             subtitle = this@GameActivity.javaClass.simpleName
             setSupportActionBar(this)
-            var numPlayers = intent.getIntExtra(NUM_PLAYERS, 0)
+            val numPlayers = intent.getIntExtra(NUM_PLAYERS, 0)
 
             agb.rockBtn.setOnClickListener {
                 playGame(numPlayers, "Rock")
@@ -34,7 +34,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun playGame(numPlayers: Int, choice: String){
-        if (numPlayers != 2) {
+        if (numPlayers == 2) {
             playOneVsTwo(choice)
         }
         else {
@@ -46,32 +46,27 @@ class GameActivity : AppCompatActivity() {
         val options = arrayOf("Rock", "Paper", "Scissor")
         val bot1Choice = options.random()
 
-        if (playerChoice == bot1Choice){
-            showResult(this, "draw")
-        }
-        if ((playerChoice == "Rock" && bot1Choice == "Paper") ||
+        if (playerChoice == bot1Choice) {
+            showResult("draw")
+        } else if ((playerChoice == "Rock" && bot1Choice == "Paper") ||
             (playerChoice == "Paper" && bot1Choice == "Scissor") ||
-            (playerChoice == "Scissor" && bot1Choice == "Rock")){
-            showResult(this, "defeat")
+            (playerChoice == "Scissor" && bot1Choice == "Rock")) {
+            showResult("defeat")
+        } else {
+            showResult("victory")
         }
-        if ((playerChoice == "Paper" && bot1Choice == "Rock") ||
-            (playerChoice == "Scissor" && bot1Choice == "Paper") ||
-            (playerChoice == "Rock" && bot1Choice == "Scissor")){
-            showResult(this, "victory")
-        }
-
     }
 
     private fun playOneVsThree(playerChoice: String){
     }
 
-    fun showResult(context: Context, result: String) {
+    private fun showResult(result: String) {
         val message = when (result) {
             "victory" -> "You won!"
             "defeat" -> "You lost!"
             "draw" -> "Draw!"
             else -> "Invalid Result!"
         }
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
