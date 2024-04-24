@@ -34,18 +34,38 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun playGame(numPlayers: Int, choice: String){
-        if (numPlayers != 2) playOneVsTwo(choice) else playOneVsThree(choice)
+        if (numPlayers != 2) {
+            playOneVsTwo(choice)
+        }
+        else {
+            playOneVsThree(choice)
+        }
     }
 
     private fun playOneVsTwo(playerChoice: String){
         val options = arrayOf("Rock", "Paper", "Scissor")
         val bot1Choice = options.random()
+
+        if (playerChoice == bot1Choice){
+            showResult(this, "draw")
+        }
+        if ((playerChoice == "Rock" && bot1Choice == "Paper") ||
+            (playerChoice == "Paper" && bot1Choice == "Scissor") ||
+            (playerChoice == "Scissor" && bot1Choice == "Rock")){
+            showResult(this, "defeat")
+        }
+        if ((playerChoice == "Paper" && bot1Choice == "Rock") ||
+            (playerChoice == "Scissor" && bot1Choice == "Paper") ||
+            (playerChoice == "Rock" && bot1Choice == "Scissor")){
+            showResult(this, "victory")
+        }
+
     }
 
     private fun playOneVsThree(playerChoice: String){
     }
 
-    fun ShowResult(context: Context, result: String) {
+    fun showResult(context: Context, result: String) {
         val message = when (result) {
             "victory" -> "You won!"
             "defeat" -> "You lost!"
