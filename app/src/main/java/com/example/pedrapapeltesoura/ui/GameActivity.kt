@@ -37,12 +37,12 @@ class GameActivity : AppCompatActivity() {
         if (numPlayers != 2) playOneVsTwo(choice) else playOneVsThree(choice)
     }
 
-    private fun playOneVsTwo(choice: String){
+    private fun playOneVsTwo(playerChoice: String){
         val options = arrayOf("Rock", "Paper", "Scissor")
         val bot1Choice = options.random()
     }
 
-    private fun playOneVsThree(choice: String){
+    private fun playOneVsThree(playerChoice: String){
     }
 
     fun ShowResult(context: Context, result: String) {
