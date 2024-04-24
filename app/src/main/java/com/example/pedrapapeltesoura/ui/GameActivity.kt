@@ -1,6 +1,5 @@
 package com.example.pedrapapeltesoura.ui
 
-import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -35,14 +34,14 @@ class GameActivity : AppCompatActivity() {
 
     private fun playGame(numPlayers: Int, choice: String){
         if (numPlayers == 2) {
-            playOneVsTwo(choice)
+            playOneVsOne(choice)
         }
         else {
-            playOneVsThree(choice)
+            playOneVsTwo(choice)
         }
     }
 
-    private fun playOneVsTwo(playerChoice: String){
+    private fun playOneVsOne(playerChoice: String){
         val options = arrayOf("Rock", "Paper", "Scissor")
         val bot1Choice = options.random()
 
@@ -57,7 +56,8 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    private fun playOneVsThree(playerChoice: String){
+    private fun playOneVsTwo(playerChoice: String){
+
     }
 
     private fun showResult(result: String) {
