@@ -56,8 +56,24 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    private fun playOneVsTwo(playerChoice: String){
+    private fun playOneVsTwo(playerChoice: String) {
+        val options = arrayOf("Rock", "Paper", "Scissor")
+        val bot1Choice = options.random()
+        val bot2Choice = options.random()
 
+        if (playerChoice == bot1Choice && playerChoice == bot2Choice) {
+            showResult("draw")
+        } else if ((playerChoice == "Rock" && bot1Choice == "Paper" && bot2Choice == "Paper") ||
+            (playerChoice == "Paper" && bot1Choice == "Scissor" && bot2Choice == "Scissor") ||
+            (playerChoice == "Scissor" && bot1Choice == "Rock" && bot2Choice == "Rock")) {
+            showResult("defeat")
+        } else if ((playerChoice == "Rock" && bot1Choice == "Scissor" && bot2Choice == "Scissor") ||
+            (playerChoice == "Paper" && bot1Choice == "Rock" && bot2Choice == "Rock") ||
+            (playerChoice == "Scissor" && bot1Choice == "Paper" && bot2Choice == "Paper")) {
+            showResult("victory")
+        } else {
+            showResult("draw")
+        }
     }
 
     private fun showResult(result: String) {
