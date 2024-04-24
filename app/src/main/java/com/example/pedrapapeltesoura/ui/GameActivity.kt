@@ -41,18 +41,18 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    private fun playOneVsOne(playerChoice: String){
+    private fun playOneVsOne(playerChoice: String) {
         val options = arrayOf("Rock", "Paper", "Scissor")
         val bot1Choice = options.random()
 
         if (playerChoice == bot1Choice) {
-            showResult("draw")
+            showResultOneVsOne("draw", playerChoice, bot1Choice)
         } else if ((playerChoice == "Rock" && bot1Choice == "Paper") ||
             (playerChoice == "Paper" && bot1Choice == "Scissor") ||
             (playerChoice == "Scissor" && bot1Choice == "Rock")) {
-            showResult("defeat")
+            showResultOneVsOne("defeat", playerChoice, bot1Choice)
         } else {
-            showResult("victory")
+            showResultOneVsOne("victory", playerChoice, bot1Choice)
         }
     }
 
@@ -62,27 +62,54 @@ class GameActivity : AppCompatActivity() {
         val bot2Choice = options.random()
 
         if (playerChoice == bot1Choice && playerChoice == bot2Choice) {
-            showResult("draw")
+            showResultOneVsTwo("draw", playerChoice, bot1Choice, bot2Choice)
         } else if ((playerChoice == "Rock" && bot1Choice == "Paper" && bot2Choice == "Paper") ||
             (playerChoice == "Paper" && bot1Choice == "Scissor" && bot2Choice == "Scissor") ||
             (playerChoice == "Scissor" && bot1Choice == "Rock" && bot2Choice == "Rock")) {
-            showResult("defeat")
+            showResultOneVsTwo("defeat", playerChoice, bot1Choice, bot2Choice)
         } else if ((playerChoice == "Rock" && bot1Choice == "Scissor" && bot2Choice == "Scissor") ||
             (playerChoice == "Paper" && bot1Choice == "Rock" && bot2Choice == "Rock") ||
             (playerChoice == "Scissor" && bot1Choice == "Paper" && bot2Choice == "Paper")) {
-            showResult("victory")
+            showResultOneVsTwo("victory", playerChoice, bot1Choice, bot2Choice)
         } else {
-            showResult("draw")
+            showResultOneVsTwo("draw", playerChoice, bot1Choice, bot2Choice)
         }
     }
 
-    private fun showResult(result: String) {
+    private fun showResultOneVsOne(result: String, playerChoice: String, bot1Choice: String) {
         val message = when (result) {
-            "victory" -> "You won!"
-            "defeat" -> "You lost!"
-            "draw" -> "Draw!"
+            "victory" -> "YOU WON!\n" +
+                    "Your choice: $playerChoice \n" +
+                    "Bot 1 choice: $bot1Choice \n"
+            "defeat" -> "YOU LOST!\n" +
+                    "Your choice: $playerChoice \n" +
+                    "Bot 1 choice: $bot1Choice\n "
+            "draw" -> "DRAW!\n" +
+                    "Your choice: $playerChoice \n" +
+                    "Bot 1 choice: $bot1Choice \n"
             else -> "Invalid Result!"
         }
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    private fun showResultOneVsTwo(
+        result: String, playerChoice: String, bot1Choice: String, bot2Choice: String
+    ) {
+        val message = when (result) {
+            "victory" -> "YOU WON!\n" +
+                    "Your choice: $playerChoice \n" +
+                    "Bot 1 choice: $bot1Choice \n" +
+                    "Bot 2 choice: $bot2Choice"
+            "defeat" -> "YOU LOST!\n" +
+                    "Your choice: $playerChoice \n" +
+                    "Bot 1 choice: $bot1Choice \n" +
+                    "Bot 2 choice: $bot2Choice"
+            "draw" -> "DRAW!\n" +
+                    "Your choice: $playerChoice \n" +
+                    "Bot 1 choice: $bot1Choice \n" +
+                    "Bot 2 choice: $bot2Choice"
+            else -> "Invalid Result!"
+        }
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }
