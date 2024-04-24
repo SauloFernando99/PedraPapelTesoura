@@ -61,18 +61,24 @@ class GameActivity : AppCompatActivity() {
         val bot1Choice = options.random()
         val bot2Choice = options.random()
 
+        val playerWinsAgainstBot1 = (playerChoice == "Rock" && bot1Choice == "Scissor") ||
+                (playerChoice == "Paper" && bot1Choice == "Rock") ||
+                (playerChoice == "Scissor" && bot1Choice == "Paper")
+
+        val playerWinsAgainstBot2 = (playerChoice == "Rock" && bot2Choice == "Scissor") ||
+                (playerChoice == "Paper" && bot2Choice == "Rock") ||
+                (playerChoice == "Scissor" && bot2Choice == "Paper")
+
         if (playerChoice == bot1Choice && playerChoice == bot2Choice) {
             showResultOneVsTwo("draw", playerChoice, bot1Choice, bot2Choice)
-        } else if ((playerChoice == "Rock" && bot1Choice == "Paper" && bot2Choice == "Paper") ||
-            (playerChoice == "Paper" && bot1Choice == "Scissor" && bot2Choice == "Scissor") ||
-            (playerChoice == "Scissor" && bot1Choice == "Rock" && bot2Choice == "Rock")) {
-            showResultOneVsTwo("defeat", playerChoice, bot1Choice, bot2Choice)
-        } else if ((playerChoice == "Rock" && bot1Choice == "Scissor" && bot2Choice == "Scissor") ||
-            (playerChoice == "Paper" && bot1Choice == "Rock" && bot2Choice == "Rock") ||
-            (playerChoice == "Scissor" && bot1Choice == "Paper" && bot2Choice == "Paper")) {
+        } else if (playerWinsAgainstBot1 && playerWinsAgainstBot2) {
             showResultOneVsTwo("victory", playerChoice, bot1Choice, bot2Choice)
-        } else {
+        } else if (playerWinsAgainstBot1 && playerChoice == bot2Choice) {
             showResultOneVsTwo("draw", playerChoice, bot1Choice, bot2Choice)
+        } else if (playerWinsAgainstBot2 && playerChoice == bot1Choice) {
+            showResultOneVsTwo("draw", playerChoice, bot1Choice, bot2Choice)
+        } else {
+            showResultOneVsTwo("defeat", playerChoice, bot1Choice, bot2Choice)
         }
     }
 
