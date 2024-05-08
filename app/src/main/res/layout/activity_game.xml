@@ -18,6 +18,7 @@
         />
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -55,26 +56,34 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/spockBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:clickable="true"
-        android:src="@drawable/spock"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="165dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout1">
 
-    <ImageView
-        android:id="@+id/lizardBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:clickable="true"
-        android:src="@drawable/lagarto"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="212dp"
-        tools:layout_editor_absoluteY="168dp" />
+
+        <ImageView
+            android:id="@+id/spockBtn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:src="@drawable/spock"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/lizardBtn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:src="@drawable/lagarto"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
