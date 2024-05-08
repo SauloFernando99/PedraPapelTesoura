@@ -42,14 +42,16 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun playOneVsOne(playerChoice: String) {
-        val options = arrayOf("Rock", "Paper", "Scissor")
+        val options = arrayOf("Rock", "Paper", "Scissor", "Spock", "Lizard")
         val bot1Choice = options.random()
 
         if (playerChoice == bot1Choice) {
             showResultOneVsOne("draw", playerChoice, bot1Choice)
-        } else if ((playerChoice == "Rock" && bot1Choice == "Paper") ||
-            (playerChoice == "Paper" && bot1Choice == "Scissor") ||
-            (playerChoice == "Scissor" && bot1Choice == "Rock")) {
+        } else if ((playerChoice == "Rock" && (bot1Choice == "Paper" || bot1Choice == "Spock")) ||
+            (playerChoice == "Paper" && (bot1Choice == "Scissor" || bot1Choice ==  "Lizard")) ||
+            (playerChoice == "Scissor" && (bot1Choice == "Rock" || bot1Choice == "Spock")) ||
+            (playerChoice == "Lizard" && (bot1Choice == "Scissor" || bot1Choice == "Rock")) ||
+            (playerChoice == "Spock" && (bot1Choice == "Paper" || bot1Choice == "Lizard"))) {
             showResultOneVsOne("defeat", playerChoice, bot1Choice)
         } else {
             showResultOneVsOne("victory", playerChoice, bot1Choice)
