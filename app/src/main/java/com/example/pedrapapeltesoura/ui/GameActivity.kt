@@ -29,6 +29,12 @@ class GameActivity : AppCompatActivity() {
             agb.scissorBtn.setOnClickListener {
                 playGame(numPlayers, "Scissor")
             }
+            agb.spockBtn.setOnClickListener {
+                playGame(numPlayers, "Spock")
+            }
+            agb.lizardBtn.setOnClickListener {
+                playGame(numPlayers, "Lizard")
+            }
         }
     }
 
@@ -59,17 +65,21 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun playOneVsTwo(playerChoice: String) {
-        val options = arrayOf("Rock", "Paper", "Scissor")
+        val options = arrayOf("Rock", "Paper", "Scissor", "Spock", "Lizard")
         val bot1Choice = options.random()
         val bot2Choice = options.random()
 
-        val playerWinsAgainstBot1 = (playerChoice == "Rock" && bot1Choice == "Scissor") ||
-                (playerChoice == "Paper" && bot1Choice == "Rock") ||
-                (playerChoice == "Scissor" && bot1Choice == "Paper")
+        val playerWinsAgainstBot1 = (playerChoice == "Rock" && (bot1Choice == "Scissor" || bot1Choice == "Lizard")) ||
+                (playerChoice == "Paper" && (bot1Choice == "Rock" || bot1Choice == "Spock")) ||
+                (playerChoice == "Scissor" && (bot1Choice == "Paper" || bot1Choice == "Lizard")) ||
+                (playerChoice == "Lizard" && (bot1Choice == "Paper" || bot1Choice == "Spock")) ||
+                (playerChoice == "Spock" && (bot1Choice == "Rock" || bot1Choice == "Scissor"))
 
-        val playerWinsAgainstBot2 = (playerChoice == "Rock" && bot2Choice == "Scissor") ||
-                (playerChoice == "Paper" && bot2Choice == "Rock") ||
-                (playerChoice == "Scissor" && bot2Choice == "Paper")
+        val playerWinsAgainstBot2 = (playerChoice == "Rock" && (bot2Choice == "Scissor" || bot2Choice == "Lizard")) ||
+                (playerChoice == "Paper" && (bot2Choice == "Rock" || bot2Choice == "Spock")) ||
+                (playerChoice == "Scissor" && (bot2Choice == "Paper" || bot2Choice == "Lizard")) ||
+                (playerChoice == "Lizard" && (bot2Choice == "Paper" || bot2Choice == "Spock")) ||
+                (playerChoice == "Spock" && (bot2Choice == "Rock" || bot2Choice == "Scissor"))
 
         if (playerChoice == bot1Choice && playerChoice == bot2Choice) {
             showResultOneVsTwo("draw", playerChoice, bot1Choice, bot2Choice)
