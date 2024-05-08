@@ -52,6 +52,29 @@
             android:src="@drawable/scissor"
             android:layout_gravity="center"
             tools:ignore="MissingConstraints" />
+
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/spockBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:src="@drawable/spock"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <ImageView
+        android:id="@+id/lizardBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:src="@drawable/lagarto"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="212dp"
+        tools:layout_editor_absoluteY="168dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
